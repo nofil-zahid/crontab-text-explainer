@@ -1,3 +1,6 @@
+import { alphabeticMonth } from "./alphabeticMonth";
+import { alphabeticWeek } from "./alphabeticWeek";
+
 const expression = ["minute", "hour", "day-of-month", "month", "day-of-week"];
 
 let count = 0;
@@ -48,7 +51,8 @@ export const cron_expression_item_detail = [
             ',': 'value list separator',
             '-': 'range of values',
             '/': 'step values',
-            'range': [1,12]
+            'range': [1,12],
+            'range2': [Object.entries(alphabeticMonth).map((key) => key[0])]
         },
     },
 
@@ -60,7 +64,8 @@ export const cron_expression_item_detail = [
             ',': 'value list separator',
             '-': 'range of values',
             '/': 'step values',
-            'range': [0,6]
+            'range': [0,6],
+            'range2': [Object.entries(alphabeticWeek).map((key) => key[0])]
         },
     },
 
