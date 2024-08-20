@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { style } from "./Input.css";
+import { style, modalStyle } from "./Input.css";
 import { InputParams } from "../../interfaces/InputParams";
 import { isValidCronExpression } from "../../functions/validateInputs";
 import Modal from "../Modal/Modal";
+import { cron_expression_item_detail } from "../../json/cron_expression";
 
 const InputField: React.FC<InputParams> = ({ value, setValue, hasError, setHasError }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedExpressionItem, setSelectedExpressionItem] = useState<string>("");
 
-    const openModal = () => setIsModalOpen(true);
+    const openModal = (id: string) => {
+        setSelectedExpressionItem(id);
+        setIsModalOpen(true);
+    }
     const closeModal = () => setIsModalOpen(false);
-
-    const expression = ["minute", "hour", "day-of-month", "month", "day-of-week"];
 
     useEffect(()=>{
         setHasError(isValidCronExpression(value));
@@ -27,15 +30,31 @@ const InputField: React.FC<InputParams> = ({ value, setValue, hasError, setHasEr
             />
             <div style={style.expression_items}>
                 {
-                    expression.map((item, index) => (
-                        <span key={index} onClick={openModal}>{item}</span>
+                    cron_expression_item_detail.map((item, index) => (
+                        <span key={index} onClick={()=>openModal(item.id)}>{item.id}</span>
                     ))
                 }
             </div>
 
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <h2>Modal Title</h2>
-                <p>This is the content of the modal.</p>
+                <div style={modalStyle.container}>
+                    {
+                        cron_expression_item_detail.map((exp) =>
+                            exp.id === selectedExpressionItem ? (
+                                <div key={exp.id}>
+                                <h3 style={modalStyle.heading}>{exp.heading}</h3>
+                                <hr style={modalStyle.divider} />
+                                {Object.entries(exp.detail).map(([key, value]) => (
+                                    <div key={key} style={modalStyle.detailRow}>
+                                        <span style={modalStyle.detailKey}>{key}</span>
+                                        <span style={modalStyle.detailValue}>{ key !== 'range' ? value : value[0]+"-"+value[1]}</span>
+                                    </div>
+                                ))}
+                                </div>
+                            ) : null
+                        )
+                    }
+                </div>
             </Modal>
         </div>
     );
