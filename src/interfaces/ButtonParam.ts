@@ -1,3 +1,3 @@
 export interface ButtonParam {
-    callbackFunc: () => void
+    callbackFunc: (value: string) => void
 }
