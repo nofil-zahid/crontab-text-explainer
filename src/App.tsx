@@ -8,13 +8,14 @@ import Footer from './layout/Footer/Footer';
 
 function App() {
   const [value, setValue] = useState<string>("0 22 * * 1-5");
+  const [hasError, setHasError] = useState<boolean>(false);
 
   return (
     <div style={style.container}>
       <Header/>
-      <TextArea text={value} />
+      <TextArea text={value} hasError={hasError}/>
       <span style={{display: 'flex', flexDirection: 'row'}}>
-        <InputField value={value} setValue={setValue}/>
+        <InputField value={value} setValue={setValue} setHasError={setHasError} hasError={hasError}/>
         <Button callbackFunc={setValue}/>
       </span>
       <Footer/>
