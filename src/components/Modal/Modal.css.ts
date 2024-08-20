@@ -15,7 +15,7 @@ export const modalStyles: Styles = {
     },
     content: {
         position: 'relative',
-        backgroundColor: 'white',
+        backgroundColor: '#616161',
         padding: '20px',
         borderRadius: '8px',
         maxWidth: '500px',
