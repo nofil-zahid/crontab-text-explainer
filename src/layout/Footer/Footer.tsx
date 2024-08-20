@@ -1,12 +1,11 @@
 import React from 'react';
+import footerStyle from './Footer.css';
 
-const Footer = () => {
+const Footer: React.FC = () => {
     return (
-        <React.Fragment>
-            <div>
-                <p>Header</p>
-            </div>
-        </React.Fragment>
+        <div style={footerStyle.footerContainer}>
+            <p style={footerStyle.footerText}>© 2024 Crontab Explainer. All rights reserved.</p>
+        </div>
     );
 }
 
