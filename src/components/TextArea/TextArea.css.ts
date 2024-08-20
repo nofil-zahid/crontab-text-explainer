@@ -8,6 +8,7 @@ export const style: Styles = {
         wordWrap: 'break-word',
         textAlign: 'center',
         margin: '20px 0',
-        height: 90,
+        minHeight: 70,
+        fontStyle: 'italic'
     },
 }

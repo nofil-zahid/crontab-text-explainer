@@ -6,7 +6,7 @@ import { style } from "./TextArea.css";
 
 const TextArea: React.FC<TextAreaProps> = (props) => {
 
-    const {text} = props;
+    const {text, hasError} = props;
 
     const [cronDetail, setCronDetail] = useState("");
 
@@ -15,17 +15,13 @@ const TextArea: React.FC<TextAreaProps> = (props) => {
         const cronIn = text.split(" ");
 
         if (cronIn.length === 5) {
-            console.log("here we go")
             setCronDetail(evaluateCronString(cronIn));
-        }
-        else {
-            // alert("Issue")
         }
 
     }, [text])
 
     return (
-        <p style={style.textStyle}>"{cronDetail || "nothing to display"}"</p>
+        <p style={style.textStyle}>"{hasError ? cronDetail : ""}."</p>
     );
 }
 
