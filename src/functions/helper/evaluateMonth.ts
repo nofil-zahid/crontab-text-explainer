@@ -12,6 +12,11 @@ export const evaluateMonth = (month: string) => {
         return "";
     }
 
+    if (month.startsWith("*/")) {
+        month = month.slice(2);
+        result = month.includes("-") ? " month of " : " every month of "
+    }
+
     if (month.includes("-")) {
         monthsArray = month.split("-");
         if (monthsArray.length != 2) return "";
@@ -39,7 +44,7 @@ export const evaluateMonth = (month: string) => {
                 result = result + "and " + months[val-1];
             }
             else {
-                result = result + months[val-1] + ", ";
+                result = result + months[val-1] + (i===monthsArray.length-1 ? ", " : " ");
             }
         }
     }

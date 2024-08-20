@@ -11,6 +11,11 @@ export const evaluateDayOfWeek = (dow: string) => {
         return "";
     }
 
+    if (dow.startsWith("*/")) {
+        dow = dow.slice(2);
+        result = dow.includes("-") ? " day-of-week of " : " every day-of-week of "
+    }
+
     if (dow.includes("-")) {
         daysInWeek = dow.split("-");
         if (daysInWeek.length != 2) return "";
@@ -38,7 +43,7 @@ export const evaluateDayOfWeek = (dow: string) => {
                 result = result + "and " + week[val];
             }
             else {
-                result = result + week[val] + ", ";
+                result = result + week[val] + (i===daysInWeek.length-1 ? ", " : " ");
             }
         }
     }

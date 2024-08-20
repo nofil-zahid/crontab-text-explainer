@@ -6,6 +6,11 @@ export const evaluateDayOfMonth = (dom: string) => {
         return "";
     }
 
+    if (dom.startsWith("*/")) {
+        dom = dom.slice(2);
+        result = dom.includes("-") ? " day-of-month of " : " every day-of-month of "
+    }
+
     if (dom.includes("-")) {
         daysInMonth = dom.split("-");
         if (daysInMonth.length != 2) return "";
@@ -35,7 +40,7 @@ export const evaluateDayOfMonth = (dom: string) => {
                 result = result + "and " + val;
             }
             else {
-                result = result + val+ ", ";
+                result = result + val+ (i===daysInMonth.length-1 ? ", " : " ");
             }
         }
     }
