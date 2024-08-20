@@ -11,19 +11,9 @@ export const evaluateCronString = (cronIn: string[]) => {
     // 2. day of month
     // 3. month
     // 4. day of week
-
-
-    console.log("yo function called")
-    console.log(cronIn)
     
-    // let isAllStar = true;
-    let minute="", hour="", day_of_month="", month="", day_of_week="", resultant="";
-
-    // cronIn.forEach(item => {
-    //     if (item === "*") {
-    //         isAllStar = false;
-    //     }
-    // })
+    let minute="", hour="", day_of_month="", month="", day_of_week="", resultant=""
+    let colonInTime = false;
     
     if (cronIn.filter(c => c == '*').length === 5) return "At every minute.";
 
@@ -32,20 +22,19 @@ export const evaluateCronString = (cronIn: string[]) => {
         hour = evaluateHour(cronIn[1]);
     }
     else {
-        minute = Number.parseInt(cronIn[0]) > 10 ? cronIn[0] : "0"+cronIn[0] ;
-        hour = Number.parseInt(cronIn[1]) > 10 ? cronIn[1] : "0"+cronIn[1] ;
+        minute = Number.parseInt(cronIn[0])>10 || cronIn[0][0]==="0" ? cronIn[0] : "0"+cronIn[0] ;
+        hour = Number.parseInt(cronIn[1])>10 || cronIn[1][0]==="0" ? cronIn[1] : "0"+cronIn[1] ;
+
+        if (cronIn[0].length==1 && cronIn[0]=="0") minute = "00";
+        if (cronIn[1].length==1 && cronIn[1]=="0") hour = "00";
+
+        colonInTime = true;
     }
     day_of_month = evaluateDayOfMonth(cronIn[2]);
     month = evaluateMonth(cronIn[3]);
     day_of_week = evaluateDayOfWeek(cronIn[4]);
 
-    console.log("minute =>", minute);
-    console.log("hour =>",hour);
-    console.log("day_of_month =>", day_of_month)
-    console.log("month =>", month)
-    console.log("day_of_week =>", day_of_week)
-
-    if (minute.length==2 && hour.length==2) {
+    if (colonInTime) {
         resultant = "At "+hour+":"+minute+day_of_month+day_of_week+month;
     }
     else {
