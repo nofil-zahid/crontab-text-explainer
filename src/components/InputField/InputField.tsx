@@ -17,7 +17,10 @@ const InputField: React.FC<InputParams> = ({ value, setValue, hasError, setHasEr
     const closeModal = () => setIsModalOpen(false);
 
     useEffect(()=>{
-        setHasError(isValidCronExpression(value));
+        if (value.split(" ").length === 5)
+            setHasError(isValidCronExpression(value));
+        else 
+            setHasError(false);
     }, [value, setHasError])
 
     return (
@@ -47,7 +50,7 @@ const InputField: React.FC<InputParams> = ({ value, setValue, hasError, setHasEr
                                 {Object.entries(exp.detail).map(([key, value]) => (
                                     <div key={key} style={modalStyle.detailRow}>
                                         <span style={modalStyle.detailKey}>{key}</span>
-                                        <span style={modalStyle.detailValue}>{ key !== 'range' ? value : value[0]+"-"+value[1]}</span>
+                                        <span style={modalStyle.detailValue}>{ key === 'range' ? value[0]+"-"+value[1] : key === 'range2' ? value[0]+"" : value}</span>
                                     </div>
                                 ))}
                                 </div>
