@@ -13,7 +13,9 @@ function App() {
   return (
     <div style={style.container}>
       <Header/>
-      <TextArea text={value} hasError={hasError}/>
+      <div style={{margin: 10}}>
+        <TextArea text={value} hasError={hasError}/>
+      </div>
       <span style={{display: 'flex', flexDirection: 'row'}}>
         <InputField value={value} setValue={setValue} setHasError={setHasError} hasError={hasError}/>
         <Button callbackFunc={setValue}/>
