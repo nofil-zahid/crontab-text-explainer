@@ -45,14 +45,14 @@ const InputField: React.FC<InputParams> = ({ value, setValue, hasError, setHasEr
                         cron_expression_item_detail.map((exp) =>
                             exp.id === selectedExpressionItem ? (
                                 <div key={exp.id}>
-                                <h3 style={modalStyle.heading}>{exp.heading}</h3>
-                                <hr style={modalStyle.divider} />
-                                {Object.entries(exp.detail).map(([key, value]) => (
-                                    <div key={key} style={modalStyle.detailRow}>
-                                        <span style={modalStyle.detailKey}>{key}</span>
-                                        <span style={modalStyle.detailValue}>{ key === 'range' ? value[0]+"-"+value[1] : key === 'range2' ? value[0]+"" : value}</span>
-                                    </div>
-                                ))}
+                                    <h3 style={modalStyle.heading}>{exp.heading}</h3>
+                                    <hr style={modalStyle.divider} />
+                                    {Object.entries(exp.detail).map(([key, value]) => (
+                                        <div key={key} style={modalStyle.detailRow}>
+                                            <span style={modalStyle.detailKey}>{key}</span>
+                                            <span style={modalStyle.detailValue}>{ key === 'range' ? value[0]+"-"+value[1] : key === 'range2' ? value[0]+"" : value}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             ) : null
                         )
