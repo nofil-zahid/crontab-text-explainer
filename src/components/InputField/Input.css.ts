@@ -1,14 +1,25 @@
 import { Styles } from "../../interfaces/Styling";
 
+const getWidthResponsive = (width: number) => {
+    if (width>=500 && width<=600) return 350;
+    if (width>=450 && width<=500) return 320;
+    if (width>=400 && width<=450) return 260;
+    if (width>=350 && width<=400) return 260;
+    if (width>=300 && width<=350) return 280;
+
+    return 400;
+}
+
 export const style: Styles = {
     container: {
         justifyContent: 'center',
         margin: '20px 0',
-        border: 'none' 
+        border: 'none',
+        paddingLeft: 20,
     },
     input_field: {
-        padding: '15px',
-        width: '400px',
+        padding: window.innerWidth<400 ? '5px' : '15px',
+        width:  getWidthResponsive(window.innerWidth),
         fontSize: '2rem',
         fontWeight: 'bold',
         border: '2px solid #00bfa5', 

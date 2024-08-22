@@ -9,6 +9,7 @@ const styles: Styles = {
         textDecoration: 'underline',
         color: '#00bfa5',
         backgroundColor: '#212121',
+        marginRight: 20
     },
 };
 
