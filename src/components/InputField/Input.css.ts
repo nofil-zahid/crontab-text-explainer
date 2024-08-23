@@ -4,8 +4,8 @@ const getWidthResponsive = (width: number) => {
     if (width>=500 && width<=600) return 350;
     if (width>=450 && width<=500) return 320;
     if (width>=400 && width<=450) return 260;
-    if (width>=350 && width<=400) return 260;
-    if (width>=300 && width<=350) return 280;
+    if (width>=350 && width<=400) return 250;
+    if (width>=300 && width<=350) return 200;
 
     return 400;
 }
