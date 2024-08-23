@@ -1,9 +1,12 @@
 {
+  "homepage": "http://nofil-zahid.github.io/crontab-text-explainer",
   "name": "crontab-text-explainer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "gh-pages-build": "vite build --base=/crontab-text-explainer/",
+    "gh-pages-deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
