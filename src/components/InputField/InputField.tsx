@@ -50,7 +50,7 @@ const InputField: React.FC<InputParams> = ({ value, setValue, hasError, setHasEr
                                     {Object.entries(exp.detail).map(([key, value]) => (
                                         <div key={key} style={modalStyle.detailRow}>
                                             <span style={modalStyle.detailKey}>{key}</span>
-                                            <span style={modalStyle.detailValue}>{ key === 'range' ? value[0]+"-"+value[1] : key === 'range2' ? value[0]+"" : value}</span>
+                                            <span style={modalStyle.detailValue}>{ key === 'range' ? value[0]+"-"+value[1] : key === 'range2' ? "(!Recommended. !Standard) "+value[0]+"" : value}</span>
                                         </div>
                                     ))}
                                 </div>
