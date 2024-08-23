@@ -26,15 +26,27 @@ const commaCheck = (str: string, range: number[]): boolean => {
     return true;
 }
 
+// const alphabeticalExpressionItem = (str: string, type: string, range: number[]) => {
+//     console.log("item", str)
+//     console.log("range", range)
+//     console.log('type', type)
+
+//     if (type === 'day-of-month') {
+//         console.log("object")
+//     }
+//     else if (type === 'day-of-week') {
+//         console.log('ksl')
+//     }
+
+//     return str;
+// }
+
 const checkValidItem = (str: string, type: string): boolean => {
     const range = cron_expression_item_detail.filter(c => c.id===type)[0].detail.range;
 
-    if (type==="day-of-month") {
-        console.log("day-of-month")
-    }
-    else if (type==='day-of-week') {
-        console.log('day-of-week')
-    }
+    // if (type==="day-of-month" || type==='day-of-week') {
+    //     str = alphabeticalExpressionItem(str, type, range)
+    // }
 
     for (const item of str) {
         const ascii = item.charCodeAt(0);
