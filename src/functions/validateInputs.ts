@@ -5,13 +5,13 @@ const isInRange = (num: string, range: number[]) => (Number.parseInt(num)>=range
 const checkOrder = (num1: string, num2: string) => (Number.parseInt(num1) < Number.parseInt(num2)) 
 
 const hyphenCheck = (str: string, range: number[]) => {
-    if (str.includes('--') || str.startsWith("-") || str.endsWith("-")) return false;
+    if (str.includes('--') || str.startsWith("-") || str.endsWith("-") || str.includes(",")) return false;
     const numArr = str.split('-');
     return numArr.length==2 && checkOrder(numArr[0], numArr[1]) && numArr.length === 2 && isInRange(numArr[0], range) && isInRange(numArr[1], range)
 }
 
 const commaCheck = (str: string, range: number[]): boolean => {
-    if (str.includes(',,') || str.startsWith(",") || str.endsWith(",")) return false;
+    if (str.includes(',,') || str.startsWith(",") || str.endsWith(",") || str.includes("-")) return false;
 
     const numArr = str.split(",");
 
